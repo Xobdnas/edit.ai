@@ -1,0 +1,7 @@
+name: 'Users'
+routes: 'routes.js'
+models:
+ - 'db/user.model.js'
+events:
+ - 'menu'
+

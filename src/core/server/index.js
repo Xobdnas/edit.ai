@@ -19,11 +19,18 @@ app.use('/js', express.static(resolve(__dirname, '../../../public/js/')));
 // Only works on the Server for now. Need to make it isomorphic.
 const plugin = new Plugin();
 const loadedRoutes = plugin.loadType('routes');
+
 const routes = {
   path: '/',
   component: App,
-  childRoutes: loadedRoutes.shift()
+  childRoutes: []
 };
+
+loadedRoutes.forEach((r) => {
+  r.forEach((i) => {
+    routes.childRoutes.push(i);
+  });
+});
 
 // Server Side Render.
 app.get('*', function (req, res) {

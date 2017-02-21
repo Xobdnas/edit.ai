@@ -1,5 +1,6 @@
 {
   "routes": [
+    "./src/plugins/content/routes.js",
     "./src/plugins/users/routes.js"
   ]
 }

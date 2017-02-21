@@ -4,6 +4,8 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import App from './core/system/components/App';
 import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';
+import Article from 'plugins/content/component/Article';
+
 
 
 // TODO: Fix plugin loader to work client/server side.
@@ -18,6 +20,7 @@ const routes = {
   childRoutes: [
     { path: '/login', component: Login },
     { path: '/reset', component: Reset },
+    { path: '/create', component: Article },
   ]
 }
 

@@ -1,7 +1,5 @@
 # edit.ai
 
-AI based CMS
-
 ```
 docker-compose up -d # spin up the Database.
 yarn

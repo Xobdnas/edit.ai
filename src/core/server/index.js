@@ -1,15 +1,13 @@
-var express = require('express');
-import Plugin from '../plugin';
+import express from 'express';
+import {resolve} from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
-
+import Plugin from '../plugin';
 import Html from '../system/components/Html';
 import App from '../system/components/App';
 
-import {resolve} from 'path';
-
-var app = express();
+const app = express();
 
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
@@ -19,9 +17,8 @@ app.use('/js', express.static(resolve(__dirname, '../../../public/js/')));
 
 
 // Only works on the Server for now. Need to make it isomorphic.
-const plugin = new Plugin()
+const plugin = new Plugin();
 const loadedRoutes = plugin.loadType('routes');
-
 const routes = {
   path: '/',
   component: App,
@@ -40,7 +37,8 @@ app.get('*', function (req, res) {
       const output = renderToString(html);
       res.status(200).send(output)
 
-    } else {
+    }
+    else {
       res.status(404).send('Not found')
     }
   });

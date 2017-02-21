@@ -1,14 +1,15 @@
-version: '2'
+version: '3'
 services:
   db:
-    image: mysql:5.7
+    image: postgres:9.6-alpine
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - TZ=US/Eastern
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=editai
     volumes:
-      - "db:/var/lib/mysql"
+      - "db:/var/lib/postgresql/data"
 volumes:
   db:
     driver: local

@@ -1,4 +1,4 @@
-# edit.ai
+# editor
 
 ```
 docker-compose up -d # spin up the Database.

@@ -7,7 +7,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=editai
+      - POSTGRES_DB=editor
     volumes:
       - "db:/var/lib/postgresql/data"
 volumes:

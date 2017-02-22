@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize'),
-  Users = require('./user');
+import db from '../db';
+import Plugin from '../plugin';
 
-// Set up user table.
-Users.sync({force: true}).then(function () {
-  // Create User Table.
-  return Users.create({
-    username: 'admin@admin',
-    password: 'admin'
-  });
-});
+// We don't have to do anything except load the module into our app.
+const plugin = new Plugin();
+const loadedRoutes = plugin.loadType('db');
+
+// Set up all tables.
+// TODO: Promp about everything about to get deleted.
+db.sync({force:true});
+

@@ -2,5 +2,8 @@
   "routes": [
     "./src/plugins/content/routes.js",
     "./src/plugins/users/routes.js"
+  ],
+  "db": [
+    "./src/plugins/content/db/content.db.js"
   ]
 }

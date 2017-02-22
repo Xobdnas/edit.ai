@@ -3,11 +3,8 @@
 ```
 docker-compose up -d # spin up the Database.
 yarn
-# yarn db-setup # Create Tables, Will delete all data.
-
-
-yarn client
-yarn start
+yarn db-setup # Create Tables, Will delete all data.
+yarn dev # Will run yarn client & yarn start
 
 Visit:
  - http://localhost:3000/login

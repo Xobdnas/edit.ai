@@ -13,7 +13,8 @@
     }
   ],
   "scripts": {
-    "db-setup": "node src/db/setup.js",
+    "db-setup": "babel-node src/core/db/setup.js",
+    "dev": "yarn client & yarn start",
     "client": "webpack --watch",
     "start": "babel-watch src/server.js"
   },

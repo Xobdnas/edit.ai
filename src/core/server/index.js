@@ -1,19 +1,17 @@
 import express from 'express';
-import {resolve} from 'path';
+import path, {resolve} from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import Plugin from '../plugin';
 import Html from '../system/components/Html';
 import App from '../system/components/App';
-
 const app = express();
 
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
-
-app.use('/css', express.static(resolve(__dirname, '../../public/css/')));
-app.use('/js', express.static(resolve(__dirname, '../../../public/js/')));
+app.use('/css', express.static(path.join(__dirname, '../../../public/css')));
+app.use('/js', express.static(resolve(__dirname, '../../../public/js')));
 
 
 // Only works on the Server for now. Need to make it isomorphic.

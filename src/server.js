@@ -1,3 +1,4 @@
+require('ignore-styles');
 const server = require('./core/server');
 
 server.listen(3000, () => {

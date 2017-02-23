@@ -6,8 +6,6 @@ import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';
 import Article from 'plugins/content/component/Article';
 
-
-
 // TODO: Fix plugin loader to work client/server side.
 // Only works on the Server for now. Need to make it isomorphic.
 // Can't run the plugin loader.

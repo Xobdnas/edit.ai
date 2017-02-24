@@ -1,8 +1,8 @@
 {
-  "name": "edit.ai",
+  "name": "editor",
   "version": "0.0.1",
   "main": "src/server.js",
-  "repository": "git@github.com:Xobdnas/edit.ai.git",
+  "repository": "git@github.com:Xobdnas/editor.git",
   "private": true,
   "contributors": [
     {

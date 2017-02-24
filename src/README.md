@@ -1,4 +1,4 @@
-# editor
+# editor ![](https://travis-ci.org/Xobdnas/editor.svg?branch=master)
 
 ```
 docker-compose up -d # spin up the Database.

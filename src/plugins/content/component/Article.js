@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from "react-jsonschema-form";
-import {Link} from 'react-router';
 import sharedb from 'sharedb/lib/client';
 
 const formSchema = {
@@ -71,7 +70,7 @@ export default class Article extends React.Component {
             </div>
             <div className="panel-body">
               <Form schema={formSchema} uiSchema={formUI} formData={this.state.formData} onChange={this.onFormDataChange}
-                    onSubmit={({formData}) => console.log("submitted formData", formData)} />
+                    onSubmit={() => {}} />
             </div>
           </div>
         </div>

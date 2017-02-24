@@ -18,11 +18,11 @@ doc.fetch(function (err) {
 });
 
 let s = server.listen(3000, () => {
-  console.log('App listening on port 3000!');
+  console.log('App listening on port 3000!'); // eslint-disable-line no-console
 });
 
 var wss = new WebSocket.Server({server: s});
-wss.on('connection', function(ws, req) {
+wss.on('connection', function(ws, req) {  // eslint-disable-line no-unused-vars
   var stream = new WebSocketJSONStream(ws);
   backend.listen(stream);
 });

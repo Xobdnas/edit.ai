@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from '../../../plugins/menu/components/Menu';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div id="outer-container">
@@ -14,4 +14,6 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};

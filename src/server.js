@@ -18,7 +18,7 @@ doc.fetch(function (err) {
 });
 
 let s = server.listen(3000, () => {
-  console.log('App listening on port 3000!')
+  console.log('App listening on port 3000!');
 });
 
 var wss = new WebSocket.Server({server: s});

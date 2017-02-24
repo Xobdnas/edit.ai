@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, browserHistory } from 'react-router';
 import App from './core/system/components/App';
 import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';

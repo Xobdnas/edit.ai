@@ -5,3 +5,6 @@ cache:
   yarn: true
   directories:
     - node_modules
+scripts:
+ - yarn lint
+ - yarn test:ci

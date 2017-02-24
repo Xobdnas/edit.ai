@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "test": "ava",
     "test:cov": "nyc ava",
-    "test:ci": "nyc ava report report --reporter=text-lcov | ./node_modules/.bin/coveralls",
+    "test:ci": "nyc ava report report --reporter=text-lcov > coverage.lcov | ./node_modules/.bin/codecov",
     "test:html": "nyc ava report --reporter=html && open ./coverage/index.html"
   },
   "ava": {
@@ -60,6 +60,7 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-watch": "^2.0.6",
+    "codecov": "^1.0.1",
     "coveralls": "^2.11.16",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",

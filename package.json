@@ -16,7 +16,15 @@
     "db-setup": "babel-node src/core/db/setup.js",
     "dev": "yarn client & yarn start",
     "client": "webpack --watch",
+    "test": "ava",
     "start": "babel-watch src/server.js"
+  },
+  "ava": {
+    "require": [
+      "babel-register",
+      "ignore-styles"
+    ],
+    "babel": "inherit"
   },
   "license": "MIT",
   "dependencies": {
@@ -36,6 +44,7 @@
     "ws": "^2.1.0"
   },
   "devDependencies": {
+    "ava": "^0.18.2",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
@@ -47,9 +56,11 @@
     "babel-preset-react": "^6.23.0",
     "babel-watch": "^2.0.6",
     "css-loader": "^0.26.1",
+    "enzyme": "^2.7.1",
     "extract-text-webpack-plugin": "beta",
     "ignore-styles": "^5.0.1",
     "node-sass": "^4.5.0",
+    "react-addons-test-utils": "^15.4.2",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1"

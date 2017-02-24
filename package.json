@@ -17,6 +17,7 @@
     "dev": "yarn client & yarn start",
     "client": "webpack --watch",
     "test": "ava",
+    "test:cov": "nyc ava",
     "test:ci": "nyc ava report report --reporter=text-lcov | ./node_modules/.bin/coveralls",
     "test:html": "nyc ava report --reporter=html && open ./coverage/index.html",
     "start": "babel-watch src/server.js"

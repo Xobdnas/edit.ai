@@ -27,7 +27,9 @@ const formUI = {
 // TODO: Everything in here is just hacked up to test, WS editor. Working o.k. need to clean up.
 var externalStateManager;
 if ( typeof window != 'undefined'){
-  var socket = new WebSocket('ws://' + window.location.host);
+  // Needed to get WS working over https with heroku.
+  let host = location.origin.replace(/^http/, 'ws');
+  var socket = new WebSocket(host);
   var connection = new sharedb.Connection(socket);
   var doc = connection.get('editor', 'form');
   // Initial state from web socket store.

@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "test": "ava",
     "test:cov": "nyc ava",
-    "test:ci": "nyc ava report --reporter=text-lcov > coverage.lcov",
+    "test:ci": "nyc ava && nyc ava report -r lcovonly && codecov",
     "test:html": "nyc ava report --reporter=html && open ./coverage/index.html"
   },
   "ava": {
@@ -61,7 +61,6 @@
     "babel-preset-react": "^6.23.0",
     "babel-watch": "^2.0.6",
     "codecov": "^1.0.1",
-    "coveralls": "^2.11.16",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.16.1",
@@ -71,7 +70,6 @@
     "extract-text-webpack-plugin": "beta",
     "ignore-styles": "^5.0.1",
     "node-sass": "^4.5.0",
-    "nyc": "^10.1.2",
     "react-addons-test-utils": "^15.4.2",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",

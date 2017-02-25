@@ -19,8 +19,9 @@
     "start": "babel-watch src/server.js",
     "lint": "eslint src",
     "test": "ava",
-    "test:cov": "nyc ava",
-    "test:ci": "nyc ava && nyc ava report -r lcovonly && codecov",
+    "test:ci": "nyc ava && yarn test:report && yarn test:upload",
+    "test:report": "nyc ava report -r lcovonly",
+    "test:upload": "codecov",
     "test:html": "nyc ava report --reporter=html && open ./coverage/index.html"
   },
   "ava": {

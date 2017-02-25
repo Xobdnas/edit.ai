@@ -4,6 +4,9 @@
   "main": "src/server.js",
   "repository": "git@github.com:Xobdnas/editor.git",
   "private": true,
+  "engines": {
+    "node": "7.x"
+  },
   "contributors": [
     {
       "name": "Eric J. Duran"

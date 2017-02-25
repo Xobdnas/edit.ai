@@ -4,6 +4,7 @@
     "./src/plugins/users/routes.js"
   ],
   "db": [
-    "./src/plugins/content/db/content.db.js"
+    "./src/plugins/content/db/content.db.js",
+    "./src/plugins/schema/db/schema.db.js"
   ]
 }

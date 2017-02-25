@@ -16,6 +16,7 @@
     "db-setup": "babel-node src/core/db/setup.js",
     "dev": "yarn client & yarn start",
     "client": "webpack --watch",
+    "prestart": "webpack",
     "start": "babel-watch src/server.js",
     "lint": "eslint src",
     "test": "ava",

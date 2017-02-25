@@ -19,7 +19,7 @@ doc.fetch(function (err) {
 
 const port = process.env.PORT || 3000;
 let s = server.listen(port, () => {
-  console.log('App listening on port 3000!'); // eslint-disable-line no-console
+  console.log(`App listening on port ${port} !`); // eslint-disable-line no-console
 });
 
 var wss = new WebSocket.Server({server: s});

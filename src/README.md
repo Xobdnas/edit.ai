@@ -1,4 +1,5 @@
-# editor [![Build Status](https://travis-ci.org/Xobdnas/editor.svg?branch=master)](https://travis-ci.org/Xobdnas/editor) [![Codecov branch](https://img.shields.io/codecov/c/github/Xobdnas/editor/master.svg)](https://codecov.io/gh/Xobdnas/editor/branch/master)
+# editor [![Build Status](https://travis-ci.org/Xobdnas/editor.svg?branch=master)](https://travis-ci.org/Xobdnas/editor) [![codecov](https://codecov.io/gh/Xobdnas/editor/branch/master/graph/badge.svg)](https://codecov.io/gh/Xobdnas/editor)
+
 
 
 ```

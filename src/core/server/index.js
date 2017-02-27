@@ -11,6 +11,7 @@ const app = express();
 
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('body-parser').json());
 app.use('/css', express.static(path.join(__dirname, '../../../public/css')));
 app.use('/js', express.static(resolve(__dirname, '../../../public/js')));
 
@@ -34,6 +35,15 @@ loadedRoutes.forEach((r) => {
 app.get('/api/schema', function (req, res) {
   schemaModel.findAll().then((schemas) => {
     res.json(schemas);
+  })
+});
+
+app.post('/api/schema', function (req, res) {
+  let schema = req.body.schema;
+  schema.form_schema = {}
+  schema.ui_schema = {}
+  schemaModel.create(schema).then((schema) => {
+    res.json(schema);
   })
 });
 

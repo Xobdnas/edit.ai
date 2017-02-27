@@ -40,7 +40,8 @@ app.get('*', function (req, res) {
       );
 
       const output = renderToString(html);
-      res.status(200).send(output)
+      // It's impossible to get <!doctype html> in react :-|.
+      res.status(200).send('<!DOCTYPE html>' + output)
 
     }
     else {

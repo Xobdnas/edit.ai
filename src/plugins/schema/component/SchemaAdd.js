@@ -23,6 +23,7 @@ export default class SchemaAdd extends React.Component {
 
     this.state = {
       formData: {},
+      status: ""
     };
   }
 
@@ -33,16 +34,29 @@ export default class SchemaAdd extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({schema: formData})
+    }).then((response) => {
+      if (response.status >= 400) {
+        this.setState({status: "danger"});
+        throw new Error("Bad response from server");
+      }
+      return response.json();
     })
+    .then(() => {
+      this.setState({formData: {}});
+      this.setState({status: "success"});
+    });
   };
 
   render() {
     return (
       <div className="row justify-content-center">
         <div className="col-10">
-          <div className="alert alert-success hidden">
-            <strong>Success!</strong> Schema Added.
-          </div>
+          { /* Have an error component that can handle all of this. */}
+          { this.state.status !== "" &&
+            <div className={`alert alert-${this.state.status} hidden`}>
+              <strong>Success!</strong> Schema Added.
+            </div>
+          }
           <h3 className="title">Add new schema</h3>
           <Form schema={formSchema} uiSchema={uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
         </div>

@@ -4,6 +4,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import Plugin from '../plugin';
+import schemaModel from '../../plugins/schema/db/schema.db';
 import Html from '../system/components/Html';
 import App from '../system/components/App';
 const app = express();
@@ -28,6 +29,12 @@ loadedRoutes.forEach((r) => {
   r.forEach((i) => {
     routes.childRoutes.push(i);
   });
+});
+
+app.get('/api/schema', function (req, res) {
+  schemaModel.findAll().then((schemas) => {
+    res.json(schemas);
+  })
 });
 
 // Server Side Render.

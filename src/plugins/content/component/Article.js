@@ -2,28 +2,6 @@ import React from 'react';
 import Form from "react-jsonschema-form";
 import sharedb from 'sharedb/lib/client';
 
-const formSchema = {
-  title: "Article",
-  type: "object",
-  properties: {
-    name: {type: "string", title: "Name"},
-    articleBody: {type: "string", title: "Body"}
-  },
-  required: [
-    "name"
-  ]
-};
-
-const formUI = {
-  "name": {
-    "ui:autofocus": true
-  },
-  "articleBody": {
-    "ui:widget": "textarea"
-  }
-};
-
-
 // TODO: Everything in here is just hacked up to test, WS editor. Working o.k. need to clean up.
 var externalStateManager;
 if ( typeof window != 'undefined'){
@@ -44,7 +22,11 @@ export default class Article extends React.Component {
     super(props);
 
     this.state = {
-      formData: {}
+      formData: {},
+      schema: {
+        form_schema: {},
+        ui_schema: {}
+      }
     };
   }
 
@@ -53,6 +35,20 @@ export default class Article extends React.Component {
     externalStateManager = (data) => {
       this.setState({formData: data});
     };
+  }
+
+  componentDidMount() {
+    fetch('/api/schema')
+      .then(function (response) {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then((schemas) => {
+        let schema = schemas[0];
+        this.setState({schema});
+      });
   }
 
   onFormDataChange = ({formData}) => {
@@ -71,7 +67,7 @@ export default class Article extends React.Component {
               <h3 className="panel-title">Article</h3>
             </div>
             <div className="panel-body">
-              <Form schema={formSchema} uiSchema={formUI} formData={this.state.formData} onChange={this.onFormDataChange}
+              <Form schema={this.state.schema.form_schema} uiSchema={this.state.schema.ui_schema} formData={this.state.formData} onChange={this.onFormDataChange}
                     onSubmit={() => {}} />
             </div>
           </div>

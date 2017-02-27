@@ -4,7 +4,8 @@
 import db from '../../../core/db';
 import Sequelize from 'sequelize';
 
-db.define('schemas', {
+// Export the Schema model.
+export default db.define('schemas', {
   name: {
     type: Sequelize.STRING,
   },

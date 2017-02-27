@@ -12,3 +12,4 @@ db.define('content', {
     type: Sequelize.STRING
   }
 });
+

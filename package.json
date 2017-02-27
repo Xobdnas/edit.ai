@@ -16,7 +16,7 @@
     }
   ],
   "scripts": {
-    "db:setup": "babel-node src/core/db/setup.js",
+    "db:setup": "babel-node src/core/db/setup.js && babel-node src/plugins/schema/db/init.db.js",
     "dev": "yarn client & yarn start",
     "client": "webpack --watch",
     "prestart": "webpack",
@@ -25,7 +25,8 @@
     "test": "ava",
     "test:ci": "nyc --all ava && nyc --all ava report -r lcovonly && codecov",
     "test:cov": "nyc --all ava",
-    "test:html": "nyc ava --all report --reporter=html && open ./coverage/index.html"
+    "test:html": "nyc ava --all report --reporter=html && open ./coverage/index.html",
+    "heroku-postbuild": "yarn db:setup"
   },
   "ava": {
     "require": [
@@ -44,7 +45,9 @@
   "dependencies": {
     "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
+    "es6-promise": "^4.0.5",
     "express": "^4.14.1",
+    "isomorphic-fetch": "^2.2.1",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",
     "react": "^15.4.2",

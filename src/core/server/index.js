@@ -38,6 +38,12 @@ app.get('/api/schema', function (req, res) {
   })
 });
 
+app.get('/api/schema/:schema', function (req, res) {
+  schemaModel.findAll({where: {name: req.params.schema}}).then((schemas) => {
+    res.json(schemas.shift());
+  })
+});
+
 app.post('/api/schema', function (req, res) {
   let schema = req.body.schema;
   schema.form_schema = {}

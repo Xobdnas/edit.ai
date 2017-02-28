@@ -7,6 +7,8 @@ import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';
 import Article from 'plugins/content/component/Article';
 import SchemaAdd from 'plugins/schema/component/SchemaAdd';
+import SchemaForm from 'plugins/schema/component/SchemaForm';
+
 
 // TODO: Fix plugin loader to work client/server side.
 // Only works on the Server for now. Need to make it isomorphic.
@@ -22,6 +24,7 @@ const routes = {
     { path: '/reset', component: Reset },
     { path: '/create', component: Article },
     { path: '/schema/add', component: SchemaAdd },
+    { path: '/add/:schema', component: SchemaForm },
   ]
 }
 

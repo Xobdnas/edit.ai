@@ -8,16 +8,7 @@ class SchemaAdd extends React.Component {
 
     this.state = {
       formData: {},
-      status: "",
-      formSchema: {
-        "title": "schema",
-        "type": "object",
-        "properties": {
-          "name": {"type": "string", "title": "Name"},
-          "label": {"type": "string", "title": "Label"}
-        },
-        "required": ["name", "label"]
-      }
+      status: ""
     };
   }
 

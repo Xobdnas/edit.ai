@@ -1,6 +1,7 @@
 import Login from './component/login';
 import Reset from './component/reset';
 
+
 // This is loaded via core/server/index.js
 // const plugin = new Plugin()
 // const loadedRoutes = plugin.loadType('routes');
@@ -22,5 +23,5 @@ module.exports = [
   {
     path: '/reset',
     component: Reset
-  },
+  }
 ];

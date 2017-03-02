@@ -1,5 +1,5 @@
-import SchemaAdd from './component/SchemaAdd';
-import SchemaForm from './component/SchemaForm';
+import SchemaAdd from './component/schemaAdd';
+import SchemaForm from './component/schemaForm';
 
 
 /**
@@ -14,5 +14,5 @@ module.exports = [
   {
     path: '/add/:schema',
     component: SchemaForm
-  },
+  }
 ];

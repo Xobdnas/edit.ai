@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from "react-jsonschema-form";
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+
 
 const formSchema = {
   title: "Login",

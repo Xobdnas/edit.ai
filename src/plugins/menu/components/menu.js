@@ -1,8 +1,9 @@
 import React from 'react';
 import { slide as ReactBurgerMenu } from 'react-burger-menu';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
 import '../style.scss';
+
 
 export default class Menu extends React.Component {
 

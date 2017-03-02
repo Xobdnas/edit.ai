@@ -1,4 +1,6 @@
 import schemaModel from './schema.db';
+
+
 // Run `./node_modules/.bin/babel-node src/plugins/schema/db/init.db.js` to execute data.
 schemaModel.create({
   name: 'article',

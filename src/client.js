@@ -3,12 +3,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
-import App from './core/system/components/App';
+
+import App from './core/system/components/app';
 import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';
-import Article from 'plugins/content/component/Article';
-import SchemaAdd from 'plugins/schema/component/SchemaAdd';
-import SchemaForm from 'plugins/schema/component/SchemaForm';
+import Article from 'plugins/content/component/article';
+import SchemaAdd from 'plugins/schema/component/schemaAdd';
+import SchemaForm from 'plugins/schema/component/schemaForm';
 import store from './store';
 
 

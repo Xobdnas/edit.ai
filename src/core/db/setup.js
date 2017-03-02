@@ -1,5 +1,6 @@
-import db from '../db';
-import Plugin from '../plugin';
+import db from '_core/db';
+import Plugin from '_core/plugin';
+
 
 // We don't have to do anything except load the module into our app.
 const plugin = new Plugin();

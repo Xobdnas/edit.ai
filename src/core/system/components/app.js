@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Menu from '../../../plugins/menu/components/Menu';
+
+import Menu from '_plugins/menu/components/menu';
+
 
 export default class App extends Component {
   render() {

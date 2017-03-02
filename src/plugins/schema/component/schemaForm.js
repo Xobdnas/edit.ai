@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from "react-jsonschema-form";
 
+
 export default class SchemaForm extends React.Component {
   constructor(props) {
     super(props);

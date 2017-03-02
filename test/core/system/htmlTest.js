@@ -2,7 +2,8 @@ import test from 'ava';
 import React from 'react';
 import {render} from 'enzyme';
 
-import Html from '../../../src/core/system/components/Html';
+import Html from '_core/system/components/html';
+
 
 test('Html component renders when content prop is passed in', t => {
   const wrapper = render(

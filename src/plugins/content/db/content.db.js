@@ -1,15 +1,11 @@
-// TODO: Want us to inclue via "core/" package aka "core/db"
-// What is below is just an idea, not real.
-// const db = require('core/db')
-import db from '../../../core/db';
-import Sequelize from 'sequelize';
+import db, { Sequelize } from '_core/db';
+
 
 db.define('content', {
   name: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   content: {
     type: Sequelize.STRING
   }
 });
-

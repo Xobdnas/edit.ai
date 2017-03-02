@@ -1,14 +1,16 @@
 import express from 'express';
-import path, {resolve} from 'path';
+import path, { resolve } from 'path';
 import React from 'react';
-import { Provider } from 'react-redux'
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
-import Plugin from '../plugin';
-import schemaModel from '../../plugins/schema/db/schema.db';
-import Html from '../system/components/Html';
-import App from '../system/components/App';
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+
+import Plugin from '_core/plugin';
+import schemaModel from '_plugins/schema/db/schema.db';
+import Html from '_core/system/components/html';
+import App from '_core/system/components/app';
 import store from '../../store';
+
 
 const app = express();
 

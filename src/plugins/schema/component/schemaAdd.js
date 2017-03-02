@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Form from "react-jsonschema-form";
 
+
 class SchemaAdd extends React.Component {
   constructor(props) {
     super(props);

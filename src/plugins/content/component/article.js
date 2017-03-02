@@ -2,6 +2,7 @@ import React from 'react';
 import Form from "react-jsonschema-form";
 import sharedb from 'sharedb/lib/client';
 
+
 // TODO: Everything in here is just hacked up to test, WS editor. Working o.k. need to clean up.
 var externalStateManager;
 if ( typeof window != 'undefined'){

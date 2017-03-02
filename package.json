@@ -16,6 +16,7 @@
     }
   ],
   "scripts": {
+    "postinstall": "ln -sfh ../src/core node_modules/_core && ln -sfh ../src/plugins node_modules/_plugins",
     "db:setup": "babel-node src/core/db/setup.js && babel-node src/plugins/schema/db/init.db.js",
     "dev": "yarn client & yarn start",
     "client": "webpack --watch",

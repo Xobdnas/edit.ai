@@ -1,6 +1,7 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import App from './core/system/components/App';
 import Login from 'plugins/users/component/login';
@@ -8,6 +9,7 @@ import Reset from 'plugins/users/component/reset';
 import Article from 'plugins/content/component/Article';
 import SchemaAdd from 'plugins/schema/component/SchemaAdd';
 import SchemaForm from 'plugins/schema/component/SchemaForm';
+import store from './store';
 
 
 // TODO: Fix plugin loader to work client/server side.
@@ -28,4 +30,9 @@ const routes = {
   ]
 }
 
-render(<Router history={browserHistory} routes={routes} />, document.getElementById('content'))
+render(
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>,
+  document.getElementById('content')
+)

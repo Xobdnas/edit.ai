@@ -1,30 +1,44 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import Form from "react-jsonschema-form";
 
-const formSchema = {
-  "title": "schema",
-  "type": "object",
-  "properties": {
-    "name": {"type": "string", "title": "Name"},
-    "label": {"type": "string", "title": "Label"}
-  },
-  "required": ["name", "label"]
-};
-
-const uiSchema = {
-  "name": {
-    "ui:autofocus": true
-  }
-};
-
-export default class SchemaAdd extends React.Component {
+class SchemaAdd extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       formData: {},
-      status: ""
+      status: "",
+      formSchema: {
+        "title": "schema",
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "title": "Name"},
+          "label": {"type": "string", "title": "Label"}
+        },
+        "required": ["name", "label"]
+      }
     };
+  }
+
+  render() {
+    const {formBuilder} = this.props;
+
+    return (
+      <div className="row justify-content-center">
+        <div className="col-10">
+          { /* Have an error component that can handle all of this. */}
+          { this.state.status !== "" &&
+            <div className={`alert alert-${this.state.status} hidden`}>
+              <strong>Success!</strong> Schema Added.
+            </div>
+          }
+          <h3 className="title">Add new schema</h3>
+
+          <Form schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
+        </div>
+      </div>
+    )
   }
 
   onSubmit = ({formData}) => {
@@ -41,26 +55,22 @@ export default class SchemaAdd extends React.Component {
       }
       return response.json();
     })
-    .then(() => {
-      this.setState({formData: {}});
-      this.setState({status: "success"});
-    });
+      .then(() => {
+        this.setState({formData: {}});
+        this.setState({status: "success"});
+      });
   };
 
-  render() {
-    return (
-      <div className="row justify-content-center">
-        <div className="col-10">
-          { /* Have an error component that can handle all of this. */}
-          { this.state.status !== "" &&
-            <div className={`alert alert-${this.state.status} hidden`}>
-              <strong>Success!</strong> Schema Added.
-            </div>
-          }
-          <h3 className="title">Add new schema</h3>
-          <Form schema={formSchema} uiSchema={uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
-        </div>
-      </div>
-    )
-  }
 }
+
+SchemaAdd.propTypes = {
+  formBuilder: React.PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
+    formBuilder: state.formBuilder
+  };
+}
+
+export default connect(mapStateToProps)(SchemaAdd);

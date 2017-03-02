@@ -1,12 +1,15 @@
 import express from 'express';
 import path, {resolve} from 'path';
 import React from 'react';
+import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import Plugin from '../plugin';
 import schemaModel from '../../plugins/schema/db/schema.db';
 import Html from '../system/components/Html';
 import App from '../system/components/App';
+import store from '../../store';
+
 const app = express();
 
 app.use(require('cookie-parser')());
@@ -53,11 +56,17 @@ app.post('/api/schema', function (req, res) {
   })
 });
 
+
 // Server Side Render.
 app.get('*', function (req, res) {
   match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (renderProps) {
-      const content = renderToString(<RouterContext {...renderProps} />)
+      const content = renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      );
+
       const html = (
         <Html content={content} />
       );

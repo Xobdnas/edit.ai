@@ -15,8 +15,15 @@ const INITIAL_STATE = {
   currentIndex: 0,
 };
 
+// TODO: need to add object destructuring to babel.
 function addField(state = {}, action) {
   switch (action.type) {
+    case "formBuilder.AddField": {
+      // TODO: Promp for a key/field-name first.
+      let key = "new" + Object.keys(state.properties).length;
+      state.properties[key] = {"type": "string", "title": "Textfield " + Object.keys(state.properties).length};
+      return state;
+    }
     default:
       return state;
   }

@@ -27,6 +27,10 @@ class SchemaAdd extends React.Component {
           <h3 className="title">Add new schema</h3>
 
           <Form schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
+
+          <div className="btn-group" role="group" aria-label="Actions to add new fields">
+            <button type="button" className="btn btn-secondary" onClick = {this.props.onAddTextFieldClick}>Add Textfield</button>
+          </div>
         </div>
       </div>
     )
@@ -51,11 +55,16 @@ class SchemaAdd extends React.Component {
         this.setState({status: "success"});
       });
   };
-
 }
 
 SchemaAdd.propTypes = {
-  formBuilder: React.PropTypes.object.isRequired
+  formBuilder: React.PropTypes.object.isRequired,
+  onAddTextFieldClick: React.PropTypes.func.isRequired
+}
+
+
+function addTextField(fieldType) {
+  return {type: "formBuilder.AddField", fieldType}
 }
 
 const mapStateToProps = (state) => {
@@ -64,4 +73,12 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(SchemaAdd);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddTextFieldClick: () => {
+      dispatch(addTextField("value"))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SchemaAdd);

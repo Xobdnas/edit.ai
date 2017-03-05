@@ -3,6 +3,8 @@ import Form from "react-jsonschema-form";
 import { connect } from 'react-redux';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+import EditableFieldTemplate from './form/editableFieldTemplate';
+
 class SchemaAdd extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class SchemaAdd extends React.Component {
           }
           <h3 className="title">Add new schema</h3>
 
-          <Form schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
+          <Form FieldTemplate={EditableFieldTemplate}  schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
 
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle caret>
@@ -77,7 +79,6 @@ SchemaAdd.propTypes = {
   onAddTextFieldClick: React.PropTypes.func.isRequired,
   onAddIntegerClick: React.PropTypes.func.isRequired
 };
-
 
 function addTextField(fieldType) {
   return {type: "formBuilder.AddField", fieldType};

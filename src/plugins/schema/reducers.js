@@ -44,6 +44,13 @@ function addInterger(state = {}, action) {
   }
 }
 
+// Remove selected field from the form schema.
+function removeField(formSchema = {}, fieldId) {
+  let props = formSchema.properties;
+  delete props[fieldId.replace('root_', '')];
+  return {...formSchema, properties: props};
+}
+
 // Form builder reducer.
 export default function formBuilder(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -55,6 +62,8 @@ export default function formBuilder(state = INITIAL_STATE, action) {
       return Object.assign({}, state, {
         formSchema: addInterger(state.formSchema, action)
       });
+    case "formBuilder.removeField":
+      return {...state, formSchema: removeField(state.formSchema, action.fieldId)};
     default:
       return state;
   }

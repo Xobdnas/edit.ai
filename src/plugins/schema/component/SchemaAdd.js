@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import Form from "react-jsonschema-form";
+import { connect } from 'react-redux';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class SchemaAdd extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class SchemaAdd extends React.Component {
 
     this.state = {
       formData: {},
-      status: ""
+      status: "",
+      dropdownOpen: false
     };
   }
 
@@ -28,9 +30,16 @@ class SchemaAdd extends React.Component {
 
           <Form schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
 
-          <div className="btn-group" role="group" aria-label="Actions to add new fields">
-            <button type="button" className="btn btn-secondary" onClick = {this.props.onAddTextFieldClick}>Add Textfield</button>
-          </div>
+          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <DropdownToggle caret>
+              Add Field
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem onClick={this.props.onAddTextFieldClick}>Add Textfield</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem onClick= {this.props.onAddIntegerClick}>Add Number</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
       </div>
     )
@@ -55,16 +64,27 @@ class SchemaAdd extends React.Component {
         this.setState({status: "success"});
       });
   };
+
+  toggle = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 }
 
 SchemaAdd.propTypes = {
   formBuilder: React.PropTypes.object.isRequired,
-  onAddTextFieldClick: React.PropTypes.func.isRequired
+  onAddTextFieldClick: React.PropTypes.func.isRequired,
+  onAddIntegerClick: React.PropTypes.func.isRequired
 }
 
 
 function addTextField(fieldType) {
   return {type: "formBuilder.AddField", fieldType}
+}
+
+function addInteger(fieldType) {
+  return {type: "formBuilder.addInteger", fieldType}
 }
 
 const mapStateToProps = (state) => {
@@ -77,6 +97,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddTextFieldClick: () => {
       dispatch(addTextField("value"))
+    },
+    onAddIntegerClick: () => {
+      dispatch(addInteger(""))
     }
   }
 }

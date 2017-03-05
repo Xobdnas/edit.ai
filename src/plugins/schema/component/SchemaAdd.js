@@ -2,6 +2,7 @@ import React from 'react';
 import Form from "react-jsonschema-form";
 import { connect } from 'react-redux';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import S from 'string';
 
 import EditableFieldTemplate from './form/editableFieldTemplate';
 
@@ -29,7 +30,7 @@ class SchemaAdd extends React.Component {
           }
           <h3 className="title">Add new schema</h3>
 
-          <Form FieldTemplate={EditableFieldTemplate} schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} onSubmit={this.onSubmit} />
+          <Form FieldTemplate={EditableFieldTemplate} onChange={this.onChange} schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} onSubmit={this.onSubmit} />
 
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle caret>
@@ -69,6 +70,12 @@ class SchemaAdd extends React.Component {
         this.setState({status: "success"});
       });
   };
+
+  onChange = (form) => {
+    // Always slugify the name field.
+    // TODO: Update the state name so it's reflected on the form.
+    form.formData.name = S(form.formData.name).slugify().s;
+  }
 
   toggle = () => {
     this.setState({dropdownOpen: !this.state.dropdownOpen});

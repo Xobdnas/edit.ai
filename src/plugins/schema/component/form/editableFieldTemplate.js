@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
 function EditableFieldTemplate(props) {
   const {id, classNames, label, help, required, description, errors, children, onRemoveFieldClick} = props; // eslint-disable-line react/prop-types
   return (

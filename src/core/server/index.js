@@ -48,9 +48,11 @@ app.get('/api/schema/:schema', function (req, res) {
 });
 
 app.post('/api/schema', function (req, res) {
-  let schema = req.body.schema;
-  schema.form_schema = {};
-  schema.ui_schema = {};
+  let schema = {};
+  schema.name = req.body.data.name;
+  schema.label = req.body.data.label;
+  schema.form_schema = req.body.schema;
+  schema.ui_schema = req.body.uiSchema;
   schemaModel.create(schema).then((schema) => {
     res.json(schema);
   });

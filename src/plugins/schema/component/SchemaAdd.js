@@ -10,7 +10,6 @@ class SchemaAdd extends React.Component {
     super(props);
 
     this.state = {
-      formData: {},
       status: "",
       dropdownOpen: false
     };
@@ -30,7 +29,7 @@ class SchemaAdd extends React.Component {
           }
           <h3 className="title">Add new schema</h3>
 
-          <Form FieldTemplate={EditableFieldTemplate}  schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} formData={this.state.formData} onSubmit={this.onSubmit} />
+          <Form FieldTemplate={EditableFieldTemplate} schema={formBuilder.formSchema} uiSchema={formBuilder.uiSchema} onSubmit={this.onSubmit} />
 
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle caret>
@@ -47,13 +46,17 @@ class SchemaAdd extends React.Component {
     );
   }
 
-  onSubmit = ({formData}) => {
+  onSubmit = ({formData, schema, uiSchema}) => {
     fetch('/api/schema', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({schema: formData})
+      body: JSON.stringify({
+        data: formData,
+        schema,
+        uiSchema
+      })
     }).then((response) => {
       if (response.status >= 400) {
         this.setState({status: "danger"});
@@ -68,9 +71,7 @@ class SchemaAdd extends React.Component {
   };
 
   toggle = () => {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
+    this.setState({dropdownOpen: !this.state.dropdownOpen});
   }
 }
 

@@ -20,7 +20,7 @@ export default class Plugin {
 
     this.plugins_conf[type].forEach(function (i) {
       types.push(require(path.join(process.cwd(), i)));
-    })
+    });
     return types;
   }
 

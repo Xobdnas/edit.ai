@@ -28,11 +28,11 @@ const routes = {
     { path: '/schema/add', component: SchemaAdd },
     { path: '/add/:schema', component: SchemaForm },
   ]
-}
+};
 
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
   </Provider>,
   document.getElementById('content')
-)
+);

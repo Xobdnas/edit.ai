@@ -42,7 +42,7 @@ class SchemaAdd extends React.Component {
           </Dropdown>
         </div>
       </div>
-    )
+    );
   }
 
   onSubmit = ({formData}) => {
@@ -76,32 +76,32 @@ SchemaAdd.propTypes = {
   formBuilder: React.PropTypes.object.isRequired,
   onAddTextFieldClick: React.PropTypes.func.isRequired,
   onAddIntegerClick: React.PropTypes.func.isRequired
-}
+};
 
 
 function addTextField(fieldType) {
-  return {type: "formBuilder.AddField", fieldType}
+  return {type: "formBuilder.AddField", fieldType};
 }
 
 function addInteger(fieldType) {
-  return {type: "formBuilder.addInteger", fieldType}
+  return {type: "formBuilder.addInteger", fieldType};
 }
 
 const mapStateToProps = (state) => {
   return {
     formBuilder: state.formBuilder
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddTextFieldClick: () => {
-      dispatch(addTextField("value"))
+      dispatch(addTextField("value"));
     },
     onAddIntegerClick: () => {
-      dispatch(addInteger(""))
+      dispatch(addInteger(""));
     }
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SchemaAdd);

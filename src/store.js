@@ -1,5 +1,5 @@
 import {createStore } from 'redux';
-import editor from './reducers'
+import editor from './reducers';
 
 
 // TODO: Add a plugin loader for reducers here.
@@ -18,9 +18,9 @@ function rootReducer(state = {}, action) {
   return {
     editor: editor(state.editor, action),
     formBuilder: formBuilder(state.formBuilder, action)
-  }
+  };
 }
 
-let store = createStore(rootReducer)
+let store = createStore(rootReducer);
 
 export default store;

@@ -1,9 +1,9 @@
 import express from 'express';
 import path, {resolve} from 'path';
 import React from 'react';
-import { Provider } from 'react-redux'
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
 import Plugin from '../plugin';
 import schemaModel from '../../plugins/schema/db/schema.db';
 import Html from '../system/components/Html';
@@ -38,22 +38,22 @@ loadedRoutes.forEach((r) => {
 app.get('/api/schema', function (req, res) {
   schemaModel.findAll().then((schemas) => {
     res.json(schemas);
-  })
+  });
 });
 
 app.get('/api/schema/:schema', function (req, res) {
   schemaModel.findAll({where: {name: req.params.schema}}).then((schemas) => {
     res.json(schemas.shift());
-  })
+  });
 });
 
 app.post('/api/schema', function (req, res) {
   let schema = req.body.schema;
-  schema.form_schema = {}
-  schema.ui_schema = {}
+  schema.form_schema = {};
+  schema.ui_schema = {};
   schemaModel.create(schema).then((schema) => {
     res.json(schema);
-  })
+  });
 });
 
 
@@ -73,13 +73,13 @@ app.get('*', function (req, res) {
 
       const output = renderToString(html);
       // It's impossible to get <!doctype html> in react :-|.
-      res.status(200).send('<!DOCTYPE html>' + output)
+      res.status(200).send('<!DOCTYPE html>' + output);
 
     }
     else {
-      res.status(404).send('Not found')
+      res.status(404).send('Not found');
     }
   });
-})
+});
 
 module.exports = app;

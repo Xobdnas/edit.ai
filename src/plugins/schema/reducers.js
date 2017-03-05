@@ -50,11 +50,11 @@ export default function formBuilder(state = INITIAL_STATE, action) {
     case "formBuilder.AddField":
       return Object.assign({}, state, {
         formSchema: addField(state.formSchema, action)
-      })
+      });
     case "formBuilder.addInteger":
       return Object.assign({}, state, {
         formSchema: addInterger(state.formSchema, action)
-      })
+      });
     default:
       return state;
   }

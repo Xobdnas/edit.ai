@@ -44,10 +44,10 @@ export default class SchemaForm extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 SchemaForm.propTypes = {
   params: React.PropTypes.object.isRequired
-}
+};

@@ -73,6 +73,6 @@ export default class Article extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

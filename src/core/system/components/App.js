@@ -4,10 +4,12 @@ import Menu from '../../../plugins/menu/components/Menu';
 export default class App extends Component {
   render() {
     return (
-      <div id="outer-container">
+      <div>
         <Menu />
-        <div id="page-wrap">
-          {this.props.children}
+        <div id="outer-container">
+          <div id="page-wrap">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );

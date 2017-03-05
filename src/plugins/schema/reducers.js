@@ -17,6 +17,7 @@ const INITIAL_STATE = {
 
 // TODO: need to add object destructuring to babel.
 function addField(state = {}, action) {
+
   switch (action.type) {
     case "formBuilder.AddField": {
       // TODO: Promp for a key/field-name first.
@@ -35,6 +36,7 @@ function addInterger(state = {}, action) {
       // TODO: Promp for a key/field-name first.
       let key = "new" + Object.keys(state.properties).length;
       state.properties[key] = {"type": "integer", "title": "Int " + Object.keys(state.properties).length};
+
       return state;
     }
     default:

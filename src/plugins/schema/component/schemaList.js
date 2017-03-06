@@ -4,13 +4,9 @@ import {Button, Icon, Table} from 'semantic-ui-react';
 
 
 export default class SchemaList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      schemas: []
-    };
-  }
+  state = {
+    schemas: [],
+  };
 
   componentDidMount() {
     const schemaUrl = `/api/schema/`;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import {Button, Table} from 'semantic-ui-react';
+
 
 export default class SchemaList extends React.Component {
   constructor(props) {
@@ -33,17 +34,32 @@ export default class SchemaList extends React.Component {
             <div className="panel-heading">
             </div>
             <div className="panel-body">
-              <ListGroup>
-                {
-                  this.state.schemas.map(function(schema) {
-                    return (
-                      <ListGroupItem key={schema.id}>
-                        <Link to={`/add/${schema.name}`}>{schema.name}</Link>
-                      </ListGroupItem>
-                    );
-                  })
-                }
-              </ListGroup>
+              <Table celled striped>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell colSpan='3'>Schemas</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {
+                    this.state.schemas.map(function(schema) {
+                      return (
+                        <Table.Row key={schema.id}>
+                          <Table.Cell collapsing>
+                           <Link to={`/add/${schema.name}`}>{schema.name}</Link>
+                          </Table.Cell>
+                          <Table.Cell>{schema.form_schema.description}</Table.Cell>
+                          <Table.Cell collapsing textAlign='right'>
+                            <Button label='Edit' icon='edit' labelPosition='left' size="mini" />
+                            <Button label="Delete" icon='delete' labelPosition='left' size="mini" />
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    })
+                  }
+                </Table.Body>
+              </Table>
+
             </div>
           </div>
         </div>

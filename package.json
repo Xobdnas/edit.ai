@@ -61,6 +61,7 @@
     "react-router": "^3.0.2",
     "reactstrap": "^4.2.0",
     "redux": "^3.6.0",
+    "semantic-ui-react": "^0.67.0",
     "sequelize": "^3.30.2",
     "sharedb": "^1.0.0-beta.7",
     "string": "^3.3.3",

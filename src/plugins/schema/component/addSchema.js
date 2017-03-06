@@ -1,9 +1,8 @@
+import S from 'string';
 import React from 'react';
 import Form from "react-jsonschema-form";
 import { connect } from 'react-redux';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import S from 'string';
-
 import EditableFieldTemplate from './form/editableFieldTemplate';
 
 class SchemaAdd extends React.Component {

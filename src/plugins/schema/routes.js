@@ -1,6 +1,6 @@
-import SchemaAdd from './component/SchemaAdd';
+import AddShema from './component/addSchema';
 import SchemaForm from './component/SchemaForm';
-
+import SchemaList from './component/schemaList';
 
 /**
  * Routes need to be no-name export for now. These only work with React component right now:
@@ -9,7 +9,11 @@ import SchemaForm from './component/SchemaForm';
 module.exports = [
   {
     path: '/schema/add',
-    component: SchemaAdd
+    component: AddShema
+  },
+  {
+    path: '/add',
+    component: SchemaList
   },
   {
     path: '/add/:schema',

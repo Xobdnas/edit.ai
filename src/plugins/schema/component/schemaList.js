@@ -34,9 +34,9 @@ export default class SchemaList extends React.Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell colSpan='3'>Schemas
-                      <Link to="schema/add" className="ui small icon primary right floated left labeled button">
+                      <Button as={Link} to="/schema/add" floated='right' icon labelPosition='left' primary size='small'>
                         <Icon name='add' /> Add Schema
-                      </Link>
+                      </Button>
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>

@@ -13,7 +13,7 @@ export default class App extends Component {
 
   trigger = (
     <span>
-      <Image avatar src="https://avatars0.githubusercontent.com/u/118016?v=3&s=128" /> Eric J. Duran
+      <Image avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/baumann_alex/128.jpg" /> John A. Smith
     </span>
   );
 

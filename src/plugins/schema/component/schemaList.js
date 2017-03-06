@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {Button, Table} from 'semantic-ui-react';
+import {Button, Icon, Table} from 'semantic-ui-react';
 
 
 export default class SchemaList extends React.Component {
@@ -37,7 +37,11 @@ export default class SchemaList extends React.Component {
               <Table celled striped>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell colSpan='3'>Schemas</Table.HeaderCell>
+                    <Table.HeaderCell colSpan='3'>Schemas
+                      <Link to="schema/add" className="ui small icon primary right floated left labeled button">
+                        <Icon name='add' /> Add Schema
+                      </Link>
+                    </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>

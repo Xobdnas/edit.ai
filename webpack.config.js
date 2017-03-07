@@ -15,22 +15,21 @@ module.exports = {
     ],
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.scss/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader']
         })
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         loader: 'babel-loader'
       }
-    ],
+    ]
   },
   plugins: [
-    new ExtractTextPlugin("./public/css/styles.css"),
+    new ExtractTextPlugin("./public/css/styles.css")
   ]
 }

@@ -19,7 +19,16 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
-          use: ['css-loader', 'sass-loader']
+          use: [
+            'css-loader',
+            'sass-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [require('autoprefixer')]
+              }
+            }
+          ]
         })
       },
       {

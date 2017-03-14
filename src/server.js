@@ -1,4 +1,5 @@
-require('ignore-styles');
+import 'ignore-styles';
+import 'isomorphic-fetch';
 const server = require('./core/server');
 
 var ShareDB = require('sharedb');

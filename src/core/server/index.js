@@ -4,7 +4,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import graphqlHTTP from 'express-graphql';
-import { ApolloClient, ApolloProvider } from 'react-apollo';
+import { ApolloClient, ApolloProvider, createNetworkInterface, getDataFromTree } from 'react-apollo';
 
 import Plugin from '../plugin';
 import schemaModel from '../../plugins/schema/db/schema.db';
@@ -21,7 +21,13 @@ app.use(require('body-parser').json());
 app.use('/css', express.static(path.join(__dirname, '../../../public/css')));
 app.use('/js', express.static(resolve(__dirname, '../../../public/js')));
 
-const client = new ApolloClient();
+const port = process.env.PORT || 3000;
+const networkInterface = createNetworkInterface({
+  uri: `http://localhost:${port}/graphql`,
+});
+const client = new ApolloClient({
+    networkInterface
+});
 
 // Only works on the Server for now. Need to make it isomorphic.
 const plugin = new Plugin();
@@ -72,20 +78,23 @@ app.use('/graphql', graphqlHTTP({
 app.get('*', function (req, res) {
   match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (renderProps) {
-      const content = renderToString(
+      const app = (
         <ApolloProvider store={store}  client={client}>
           <RouterContext {...renderProps} />
         </ApolloProvider>
       );
 
-      const html = (
-        <Html content={content} />
-      );
+      getDataFromTree(app).then(() => {
+        const content = renderToString(app);
 
-      const output = renderToString(html);
-      // It's impossible to get <!doctype html> in react :-|.
-      res.status(200).send('<!DOCTYPE html>' + output);
+        const html = (
+          <Html content={content} />
+        );
 
+        const output = renderToString(html);
+        // It's impossible to get <!doctype html> in react :-|.
+        res.status(200).send('<!DOCTYPE html>' + output);
+      });
     }
     else {
       res.status(404).send('Not found');

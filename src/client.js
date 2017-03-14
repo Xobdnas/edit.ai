@@ -1,8 +1,8 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
+import { ApolloClient, ApolloProvider } from 'react-apollo';
 import App from './core/system/components/App';
 import Login from 'plugins/users/component/login';
 import Reset from 'plugins/users/component/reset';
@@ -31,9 +31,11 @@ const routes = {
   ]
 };
 
+const client = new ApolloClient();
+
 render(
-  <Provider store={store}>
+  <ApolloProvider store={store}  client={client}>
     <Router history={browserHistory} routes={routes} />
-  </Provider>,
+  </ApolloProvider>,
   document.getElementById('content')
 );

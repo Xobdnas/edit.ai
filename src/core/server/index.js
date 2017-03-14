@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import graphqlHTTP from 'express-graphql';
+import { ApolloClient, ApolloProvider } from 'react-apollo';
 
 import Plugin from '../plugin';
 import schemaModel from '../../plugins/schema/db/schema.db';
@@ -21,6 +22,7 @@ app.use(require('body-parser').json());
 app.use('/css', express.static(path.join(__dirname, '../../../public/css')));
 app.use('/js', express.static(resolve(__dirname, '../../../public/js')));
 
+const client = new ApolloClient();
 
 // Only works on the Server for now. Need to make it isomorphic.
 const plugin = new Plugin();
@@ -67,15 +69,14 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }));
 
-
 // Server Side Render.
 app.get('*', function (req, res) {
   match({routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (renderProps) {
       const content = renderToString(
-        <Provider store={store}>
+        <ApolloProvider store={store}  client={client}>
           <RouterContext {...renderProps} />
-        </Provider>
+        </ApolloProvider>
       );
 
       const html = (

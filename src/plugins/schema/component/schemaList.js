@@ -24,25 +24,25 @@ export class SchemaList extends React.Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
+                  <If condition={ !this.props.data.loading }>
+                    {this.props.data.schemas.map((schema) => {
+                      // TODO: @conortm already has a todo to make form_schema a custom graphQL scalar type.
+                      let form_schema = JSON.parse(schema.form_schema);
 
-                  {!this.props.data.loading && this.props.data.schemas.map(function(schema) {
-                    // TODO: @conortm already has a todo to make form_schema a custom graphQL scalar type.
-                    let form_schema = JSON.parse(schema.form_schema);
-
-                     return (
-                       <Table.Row key={schema.id}>
-                         <Table.Cell collapsing>
-                          <Link to={`/add/${schema.name}`}>{schema.name}</Link>
-                         </Table.Cell>
-                         <Table.Cell>{form_schema.description}</Table.Cell>
-                         <Table.Cell collapsing textAlign='right'>
-                           <Button label='Edit' icon='edit' labelPosition='left' size="mini" />
-                           <Button label="Delete" icon='delete' labelPosition='left' size="mini" />
-                         </Table.Cell>
-                       </Table.Row>
-                     );
-                   })
-                 }
+                      return (
+                        <Table.Row key={schema.id}>
+                          <Table.Cell collapsing>
+                            <Link to={`/add/${schema.name}`}>{schema.name}</Link>
+                          </Table.Cell>
+                          <Table.Cell>{form_schema.description}</Table.Cell>
+                          <Table.Cell collapsing textAlign='right'>
+                            <Button label='Edit' icon='edit' labelPosition='left' size="mini" />
+                            <Button label="Delete" icon='delete' labelPosition='left' size="mini" />
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    })}
+                  </If>
                 </Table.Body>
               </Table>
 

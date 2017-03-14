@@ -4,8 +4,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
+import graphqlHTTP from 'express-graphql';
+
 import Plugin from '../plugin';
 import schemaModel from '../../plugins/schema/db/schema.db';
+import EditorSchema from '../db/schema';
 import Html from '../system/components/Html';
 import App from '../system/components/App';
 import store from '../../store';
@@ -57,6 +60,12 @@ app.post('/api/schema', function (req, res) {
     res.json(schema);
   });
 });
+
+// GraphQL support.
+app.use('/graphql', graphqlHTTP({
+  schema: EditorSchema,
+  graphiql: true
+}));
 
 
 // Server Side Render.

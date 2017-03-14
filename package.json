@@ -49,6 +49,8 @@
     "cookie-parser": "^1.4.3",
     "es6-promise": "^4.0.5",
     "express": "^4.14.1",
+    "express-graphql": "^0.6.3",
+    "graphql": "^0.9.1",
     "isomorphic-fetch": "^2.2.1",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",

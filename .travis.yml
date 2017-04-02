@@ -4,7 +4,7 @@ node_js:
 cache:
   yarn: true
   directories:
-  - node_modules
+  - editor/node_modules
 before_install:
 - cd editor
 script:
